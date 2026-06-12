@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISO8583 Message Sender</title>
+</head>
+<body>
+    <h1>ISO8583 Message Sender</h1>
+    <form id="messageForm">
+        <label for="port">port:</label>
+        <input type="number" id="port" name="port" value="8000" required><br><br>
+
+        <label for="field_4">Field 4:</label>
+        <input type="number" id="field_4" name="field_4" value="1000" required><br><br>
+
+        <label for="field_7">Field 7:</label>
+        <input type="datetime-local" id="field_7" name="field_7" step="1" required><br><br>
+
+        <label for="field_102">Field 102:</label>
+        <select id="field_102" name="field_102" required>
+            {% for customer in customers %}
+                <option value="{{ customer }}">{{ customer }}</option>
+            {% endfor %}
+        </select><br><br>
+
+        <label for="field_103">Field 103:</label>
+        <select id="field_103" name="field_103" required>
+            {% for customer in customers %}
+                <option value="{{ customer }}">{{ customer }}</option>
+            {% endfor %}
+        </select><br><br>
+
+        <label for="field_19">Field 19:</label>
+        <input type="text" id="field_19" name="field_19" value="356" required><br><br>
+
+        <button type="submit">Send Message</button>
+    </form>
+
+    <div id="response" style="margin-top: 20px;"></div>
+
+    <script>
+        // Set default values for datetime-local and time inputs
+        window.addEventListener('DOMContentLoaded', (event) => {
+            // Set default for datetime-local (current date and time)
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            
+            const datetimeStr = `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`;
+            document.getElementById('field_7').value = datetimeStr;
+            
+            // Set default for time (current time)
+            const timeStr = `${hours}:${minutes}:${seconds}`;
+            document.getElementById('field_12').value = timeStr;
+        });
+
+        document.getElementById('messageForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // Get date and time values and format for ISO8583
+            const dateTimeValue = document.getElementById('field_7').value;
+            
+            // Format field_7 (MMDDhhmmss)
+            let field7Value = "";
+            if (dateTimeValue) {
+                const dt = new Date(dateTimeValue);
+                const month = String(dt.getMonth() + 1).padStart(2, '0');
+                const day = String(dt.getDate()).padStart(2, '0');
+                const hours = String(dt.getHours()).padStart(2, '0');
+                const minutes = String(dt.getMinutes()).padStart(2, '0');
+                const seconds = String(dt.getSeconds()).padStart(2, '0');
+                field7Value = month + day + hours + minutes + seconds;
+            }
+            
+            
+            // Collect form data
+            const formData = {
+                port: document.getElementById('port').value,
+                field_4: document.getElementById('field_4').value,
+                field_7: field7Value,  // Send formatted MMDDhhmmss
+                field_7_original: document.getElementById('field_7').value, // Keep original for reference
+                field_102: document.getElementById('field_102').value,
+                field_103: document.getElementById('field_103').value,
+                field_19: document.getElementById('field_19').value
+            };
+            
+            // Display the data being sent
+            console.log("Sending data:", formData);
+            
+            // Send JSON data to the backend
+            fetch('/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Display response
+                document.getElementById('response').innerHTML = 
+                    `<p>Status: ${data.status}</p>
+                     <p>Message: ${data.message}</p>
+                     <p>Formatted Date/Time (Field 7): ${formData.field_7}</p>
+                     <p>Formatted Time (Field 12): ${formData.field_12}</p>
+                     <pre>${JSON.stringify(data, null, 2)}</pre>`;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('response').innerHTML = 
+                    `<p style="color: red;">Error: ${error.message}</p>`;
+            });
+        });
+    </script>
+</body>
+</html>
