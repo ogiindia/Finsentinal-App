@@ -1,0 +1,392 @@
+/* Modal.css - Responsive modal styles */
+
+/* Animation for modals */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { transform: translateY(-20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* CRITICAL FIX: Ensure the modal is positioned at the root level */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000; /* Very high z-index to ensure it's above everything */
+  animation: fadeIn 0.2s ease-out;
+  /* Critical: Ensure positioning context is the viewport, not a parent element */
+  transform: none;
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  /* height: 100vh; */
+}
+
+/* Fix container to not be affected by parent width constraints */
+.modal-container {
+  position: relative;
+  width: 90%;
+  max-width: 600px; /* Default (md) size */
+  margin: 0 auto;
+  max-height: 90vh;
+  border-radius: 0.35rem;
+  overflow: hidden;
+  background-color: white;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  animation: slideIn 0.2s ease-out;
+  /* Ensure this element doesn't inherit problematic CSS */
+  transform: none;
+  flex: none;
+  min-width: 300px; /* Ensure a minimum usable width */
+}
+
+/* Responsive sizes */
+.modal-container.sm {
+  max-width: 450px;
+}
+
+.modal-container.md {
+  max-width: 600px;
+}
+
+.modal-container.lg {
+  max-width: 800px;
+}
+
+.modal-container.xl {
+  max-width: 1200px;
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  max-height: 90vh;
+  overflow: hidden;
+  padding: 5px 5px 5px 5px;
+  /* Ensure content doesn't inherit problematic CSS */
+  width: 100%;
+  min-width: 0;
+  padding: 2vw;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  /* background-color: #4e73df; */
+  border-radius: 10px 10px 10px 10;
+  color: white;
+  border-top-left-radius: 0.35rem;
+  border-top-right-radius: 0.35rem;
+  /* Ensure header sizes correctly */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.modal-title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.modal-body {
+  padding: 1.5rem;
+  overflow-y: auto;
+  max-height: calc(90vh - 140px); /* Allow scrolling for long content */
+  background-color: white;
+  /* Ensure body sizes correctly */
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 2vw;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  border-top: 1px solid #e9ecef;
+  background-color: white;
+  /* Ensure footer sizes correctly */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.modal-close-button, 
+.modal-save-button {
+  padding: 0.75rem 1.5rem;
+  color: white;
+  font-weight: 400;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.2s;
+}
+
+.modal-close-button {
+  background-color: #6c757d;
+}
+
+.modal-close-button:hover {
+  background-color: #5a6268;
+}
+
+.modal-save-button {
+  background-color: #4e73df;
+}
+
+.modal-save-button:hover {
+  background-color: #2e59d9;
+}
+
+.modal-save-button:disabled,
+.modal-close-button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+/* For small screens */
+@media (max-width: 576px) {
+  .modal-container {
+    width: 95%;
+    margin: 0.5rem;
+  }
+  
+  .modal-body {
+    padding: 1rem;
+  }
+  
+  .modal-footer {
+    padding: 0.75rem;
+    flex-wrap: wrap;
+  }
+  
+  .modal-close-button, 
+  .modal-save-button {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Form element responsiveness */
+.form-group {
+  margin-bottom: 1rem;
+  /* Ensure form groups size correctly */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.form-control {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  padding: 0.5rem 0.75rem !important;
+  font-size: 1rem !important;
+  line-height: 1.5 !important;
+  color: #495057 !important;
+  background-color: #fff !important;
+  border: 1px solid #ced4da !important;
+  border-radius: 0.25rem !important;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out !important;
+}
+
+.form-control:focus {
+  border-color: #4e73df !important;
+  box-shadow: 0 0 0 0.2rem rgba(78, 115, 223, 0.25) !important;
+  outline: none !important;
+}
+
+/* Textarea specific styling */
+textarea.form-control {
+  min-height: 80px;
+  resize: vertical;
+}
+
+/* Alert styles */
+.alert {
+  position: relative;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+}
+
+.alert-info {
+  color: #0c5460;
+  background-color: #d1ecf1;
+  border-color: #bee5eb;
+}
+
+.alert-warning {
+  color: #856404;
+  background-color: #fff3cd;
+  border-color: #ffeeba;
+}
+
+.alert-danger {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}
+
+/* Form validation feedback */
+.invalid-feedback {
+  display: block;
+  width: 100%;
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  color: #dc3545;
+}
+
+.form-text {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  color: #6c757d;
+}
+
+/* File upload styling */
+.file-input-container {
+  margin-bottom: 1rem;
+}
+
+.file-input-wrapper {
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  overflow: hidden;
+}
+
+.file-input-label {
+  display: block;
+  padding: 0.5rem 0.75rem;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #ced4da;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  margin: 0;
+  transition: background-color 0.2s;
+}
+
+.file-input-label:hover {
+  background-color: #e2e6ea;
+}
+
+.file-input-display {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.file-input-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.file-upload-button {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  background-color: #4e73df;
+  color: white;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  transition: background-color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.file-upload-button:hover {
+  background-color: #2e59d9;
+}
+
+.file-upload-button:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.file-info-display {
+  margin-top: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 0.25rem;
+  font-size: 0.85rem;
+}
+
+.file-info-display > div {
+  margin-bottom: 0.25rem;
+}
+
+.file-info-display > div:last-child {
+  margin-bottom: 0;
+}
+
+/* Modal form specific styling */
+.modal-form-content {
+  max-height: calc(90vh - 220px);
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+/* Utility classes */
+.text-success {
+  color: #28a745 !important;
+}
+
+.text-danger {
+  color: #dc3545 !important;
+}
+
+.text-muted {
+  color: #6c757d !important;
+}
+
+/* Animation for spinner */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.spinner-loader {
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid rgba(255,255,255,0.5);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  display: inline-block;
+  margin-right: 0.5rem;
+}

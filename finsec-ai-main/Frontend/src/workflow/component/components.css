@@ -1,0 +1,476 @@
+.pipeline-icon {
+    width: 120px !important;
+    height: 90px !important;
+    padding: 10px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border: 1px solid #ddd !important;
+    border-radius: 8px !important;
+    background-color: white !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+    position: relative !important;
+    transition: transform 0.2s, box-shadow 0.2s !important;
+  }
+  
+  .pipeline-icon:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15) !important;
+  }
+  
+  /* Fix for icon size */
+  .component-icon {
+    width: 28px !important;
+    height: 28px !important;
+    object-fit: contain !important;
+    margin-bottom: 6px !important;
+  }
+  
+  .pipeline-icon i {
+    font-size: 1.5rem !important;
+    margin-bottom: 6px !important;
+    color: #4e73df !important;
+  }
+  
+  .custom-component .component-icon {
+    width: 32px !important;
+    height: 32px !important;
+    padding: 2px !important;
+    background-color: white !important;
+    border-radius: 4px !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08) !important;
+  }
+  
+  .node-label {
+    font-size: 0.8rem !important;
+    max-width: 90px !important;
+    word-wrap: break-word !important;
+    text-align: center !important;
+  }
+  
+  /* Node actions container */
+  .node-actions {
+    position: absolute !important;
+    top: 3px !important;
+    right: 3px !important;
+    display: flex !important;
+    gap: 4px !important;
+    z-index: 10 !important;
+  }
+  
+  /* Edit button styles */
+  .edit-button, .delete-button {
+    padding: 2px !important;
+    font-size: 0.7rem !important;
+    background-color: transparent !important;
+    border: none !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 18px !important;
+    height: 18px !important;
+    opacity: 0.7 !important;
+    transition: opacity 0.2s !important;
+  }
+  
+  .edit-button:hover, .delete-button:hover {
+    opacity: 1 !important;
+  }
+  
+  .edit-button i {
+    font-size: 0.8rem !important;
+    margin-bottom: 0 !important;
+    color: #4e73df !important;
+  }
+  
+  /* Delete button */
+  .delete-button i {
+    font-size: 0.8rem !important;
+    margin-bottom: 0 !important;
+    color: #e74a3b !important;
+  }
+  
+  /* Button focus styles */
+  .edit-button:focus, .delete-button:focus {
+    outline: none !important;
+    box-shadow: none !important;
+  }
+  
+  .connection-point {
+    width: 8px !important;
+    height: 8px !important;
+    border-width: 1px !important;
+  }
+  
+  .connection-point.start {
+    left: -4px !important;
+  }
+  
+  .connection-point.end {
+    right: -4px !important;
+  }
+  
+  /* Parameter summary styles */
+  .parameter-summary {
+    margin-top: 3px !important;
+  }
+  
+  .parameters-badge {
+    font-size: 0.6rem !important;
+    padding: 1px 4px !important;
+    background-color: #e0e0e0 !important;
+    border-radius: 10px !important;
+    color: #333 !important;
+  }
+  
+  /* Result preview styles */
+  .result-preview {
+    font-size: 0.7rem !important;
+    margin-top: 3px !important;
+    color: #333 !important;
+  }
+  
+  .result-preview.text-success {
+    color: #28a745 !important;
+  }
+  
+  /* Error badge styles */
+  .error-badge {
+    font-size: 0.7rem !important;
+    color: #dc3545 !important;
+    margin-top: 3px !important;
+  }
+  
+  /* Modal form styles - FIXED with better dimensions */
+  .form-group {
+    margin-bottom: 1.2rem !important;
+    clear: both !important;
+  }
+  
+  .form-group label {
+    display: block !important;
+    margin-bottom: 0.6rem !important;
+    font-weight: 500 !important;
+    font-size: 0.95rem !important;
+    color: #333 !important;
+    width: 100% !important;
+  }
+  
+  .form-control, 
+  .form-control:focus {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 0.6rem 0.8rem !important;
+    font-size: 0.95rem !important;
+    line-height: 1.5 !important;
+    color: #495057 !important;
+    background-color: #fff !important;
+    background-clip: padding-box !important;
+    border: 1px solid #ced4da !important;
+    border-radius: 0.3rem !important;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out !important;
+    min-height: 42px !important;
+  }
+  
+  .form-control:focus {
+    border-color: #4e73df !important;
+    box-shadow: 0 0 0 0.2rem rgba(78, 115, 223, 0.25) !important;
+    outline: 0 !important;
+  }
+  
+  /* Select specific styling */
+  select.form-control {
+    height: 42px !important;
+    padding: 0.6rem 0.8rem !important;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 0.75rem center !important;
+    background-size: 16px 12px !important;
+    appearance: none !important;
+  }
+  
+  /* Textarea specific styling */
+  textarea.form-control {
+    min-height: 90px !important;
+    resize: vertical !important;
+    padding: 0.6rem 0.8rem !important;
+  }
+  
+  /* File input styling */
+  input[type="file"].form-control {
+    padding: 0.5rem 0.8rem !important;
+    line-height: 1.5 !important;
+    height: 42px !important;
+  }
+  
+  /* Checkbox styling */
+  .form-check {
+    display: flex !important;
+    align-items: flex-start !important;
+    margin-bottom: 1rem !important;
+    padding: 0 !important;
+    min-height: 1.5rem !important;
+  }
+  
+  .form-check-input {
+    margin-right: 0.7rem !important;
+    margin-top: 0.2rem !important;
+    flex-shrink: 0 !important;
+    width: 1rem !important;
+    height: 1rem !important;
+  }
+  
+  .form-check-label {
+    margin-bottom: 0 !important;
+    font-size: 0.95rem !important;
+    cursor: pointer !important;
+    line-height: 1.5 !important;
+  }
+  
+  .form-text {
+    display: block !important;
+    margin-top: 0.4rem !important;
+    font-size: 0.85rem !important;
+    color: #6c757d !important;
+    line-height: 1.4 !important;
+  }
+  
+  .invalid-feedback {
+    display: block !important;
+    width: 100% !important;
+    margin-top: 0.4rem !important;
+    font-size: 0.85rem !important;
+    color: #dc3545 !important;
+  }
+  
+  /* Modal content wrapper - improved */
+  .modal-form-content {
+    max-height: 65vh !important;
+    overflow-y: auto !important;
+    padding: 0.5rem 0 !important;
+  }
+  
+  /* Custom file input container - completely redesigned */
+  .file-input-container {
+    position: relative !important;
+    display: block !important;
+    width: 100% !important;
+    margin-bottom: 0.8rem !important;
+  }
+  
+  .file-input-wrapper {
+    border: 1px solid #ced4da !important;
+    border-radius: 0.3rem !important;
+    overflow: hidden !important;
+    background-color: #fff !important;
+    display: block !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    min-height: 42px !important;
+  }
+  
+  .file-input-label {
+    display: block !important;
+    padding: 0.6rem 0.8rem !important;
+    background-color: #f8f9fa !important;
+    border-bottom: 1px solid #ced4da !important;
+    font-size: 0.95rem !important;
+    font-weight: 500 !important;
+    cursor: pointer !important;
+    margin: 0 !important;
+    transition: background-color 0.2s !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    text-align: left !important;
+    color: #495057 !important;
+  }
+  
+  .file-input-label:hover {
+    background-color: #e2e6ea !important;
+  }
+  
+  .file-input-display {
+    padding: 0.6rem 0.8rem !important;
+    font-size: 0.95rem !important;
+    color: #495057 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    background-color: #fff !important;
+    min-height: 42px !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+  
+  .file-input-hidden {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+  }
+  
+  /* Upload button styling */
+  .file-upload-button {
+    display: block !important;
+    width: 100% !important;
+    padding: 0.6rem 1rem !important;
+    background-color: #4e73df !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 0.3rem !important;
+    cursor: pointer !important;
+    font-size: 0.95rem !important;
+    margin-top: 0.6rem !important;
+    transition: background-color 0.2s !important;
+    box-sizing: border-box !important;
+    min-height: 42px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  
+  .file-upload-button:hover {
+    background-color: #2e59d9 !important;
+  }
+  
+  .file-upload-button:disabled {
+    background-color: #6c757d !important;
+    cursor: not-allowed !important;
+    opacity: 0.7 !important;
+  }
+  
+  /* File info display */
+  .file-info-display {
+    margin-top: 0.6rem !important;
+    padding: 0.8rem !important;
+    background-color: #f8f9fa !important;
+    border: 1px solid #dee2e6 !important;
+    border-radius: 0.3rem !important;
+    font-size: 0.9rem !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  
+  .file-info-display > div {
+    margin-bottom: 0.4rem !important;
+    line-height: 1.4 !important;
+  }
+  
+  .file-info-display > div:last-child {
+    margin-bottom: 0 !important;
+  }
+  
+  /* Previous task output selector */
+  .previous-output-section {
+    margin: 1rem 0 !important;
+    padding: 1rem !important;
+    border: 1px solid #e3e6f0 !important;
+    border-radius: 0.25rem !important;
+    background-color: #f8f9fa !important;
+  }
+  
+  .previous-output-header {
+    display: flex !important;
+    align-items: center !important;
+    margin-bottom: 0.75rem !important;
+  }
+  
+  .previous-output-title {
+    margin: 0 0.5rem 0 0 !important;
+    font-size: 0.9rem !important;
+    font-weight: 600 !important;
+    color: #333 !important;
+  }
+  
+  .previous-output-toggle {
+    background: none !important;
+    border: none !important;
+    color: #4e73df !important;
+    cursor: pointer !important;
+    font-size: 0.8rem !important;
+    text-decoration: underline !important;
+  }
+  
+  /* Fix for d-block in bootstrap */
+  .d-block {
+    display: block !important;
+  }
+  
+  .d-flex {
+    display: flex !important;
+  }
+  
+  .align-items-center {
+    align-items: center !important;
+  }
+  
+  .justify-content-center {
+    justify-content: center !important;
+  }
+  
+  .mt-1 {
+    margin-top: 0.25rem !important;
+  }
+  
+  .mt-2 {
+    margin-top: 0.5rem !important;
+  }
+  
+  .mt-3 {
+    margin-top: 1rem !important;
+  }
+  
+  .mb-3 {
+    margin-bottom: 1rem !important;
+  }
+  
+  .me-1 {
+    margin-right: 0.25rem !important;
+  }
+  
+  .me-2 {
+    margin-right: 0.5rem !important;
+  }
+  
+  /* Alert styles */
+  .alert {
+    position: relative !important;
+    padding: 0.75rem 1.25rem !important;
+    margin-bottom: 1rem !important;
+    border: 1px solid transparent !important;
+    border-radius: 0.25rem !important;
+  }
+  
+  .alert-info {
+    color: #0c5460 !important;
+    background-color: #d1ecf1 !important;
+    border-color: #bee5eb !important;
+  }
+  
+  .alert-warning {
+    color: #856404 !important;
+    background-color: #fff3cd !important;
+    border-color: #ffeeba !important;
+  }
+  
+  .alert-danger {
+    color: #721c24 !important;
+    background-color: #f8d7da !important;
+    border-color: #f5c6cb !important;
+  }
+  
+  /* Modal overlay styles */
+  .modal-overlay {
+    z-index: 1050 !important;
+  }
