@@ -1,0 +1,57 @@
+{
+    "transaction_analysis": {
+        "status": "Normal",
+        "prediction_score": 0,
+        "fraud_probability_score": 0,
+        "normal_probability_score": 1,
+        "confidence": 1,
+        "prediction_class": 0,
+        "raw_probabilities": [1, 0]
+    },
+    "top_risk_factors": [
+        {
+            "rank": 1,
+            "feature": "tran_amount_10min",
+            "value": 1400,
+            "shap_score": 862.3835,
+            "impact": "increases fraud risk",
+            "contribution_percentage": 48.9
+        },
+        {
+            "rank": 2,
+            "feature": "tran_amount_1D",
+            "value": 1400,
+            "shap_score": 816.0754,
+            "impact": "increases fraud risk",
+            "contribution_percentage": 46.3
+        }
+    ],
+    "all_feature_impacts": {
+        "tran_above50k": {"shap_value": 0.896, "importance": 0.896, "impact_percentage": 0.05},
+        "tran_count_10min": {"shap_value": -25.8754, "importance": 25.8754, "impact_percentage": 1.47},
+        "tran_count_1D": {"shap_value": -26.2871, "importance": 26.2871, "impact_percentage": 1.49},
+        "tran_amount_10min": {"shap_value": 862.3835, "importance": 862.3835, "impact_percentage": 48.91},
+        "tran_amount_1D": {"shap_value": 816.0754, "importance": 816.0754, "impact_percentage": 46.28},
+        "isoddhr": {"shap_value": -0.2746, "importance": 0.2746, "impact_percentage": 0.02},
+        "Weekday": {"shap_value": 0.6346, "importance": 0.6346, "impact_percentage": 0.04},
+        "Location_Change": {"shap_value": 0.7317, "importance": 0.7317, "impact_percentage": 0.04},
+        "C_MODE_ATM": {"shap_value": 0.5492, "importance": 0.5492, "impact_percentage": 0.03},
+        "C_MODE_POS": {"shap_value": -0.4169, "importance": 0.4169, "impact_percentage": 0.02},
+        "C_MODE_ECOM": {"shap_value": -0.3763, "importance": 0.3763, "impact_percentage": 0.02}
+    },
+    "probabilities": {"normal": 1, "fraud": 0},
+    "input_names": [
+        "tran_above50k",
+        "tran_count_10min",
+        "tran_count_1D",
+        "tran_amount_10min",
+        "tran_amount_1D",
+        "isoddhr",
+        "Weekday",
+        "Location_Change",
+        "C_MODE_ATM",
+        "C_MODE_POS",
+        "C_MODE_ECOM"
+    ],
+    "total_feature_importance": 1763.2419
+}

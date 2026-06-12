@@ -1,0 +1,20 @@
+{
+    "model_id": 12,
+    "transaction_data": {
+        "ID": "411",
+        "MATCH_FULL_NAME_NORM": "Faisal Al-Hassan",
+        "MATCH_FIRST_NAME": "Faisal",
+        "MATCH_LAST_NAME": "Al-Hassan",
+        "MATCH_DEBITACCOUNTNUMBER": "929669",
+        "MATCH_TRAN_AMOUNT_1D": "150",
+        "MATCH_TRAN_AMOUNT_30D": "150",
+        "MATCH_CUST_ID": "929669",
+        "MATCH_DEVICE_ID": "cf4291145d0d95b0",
+        "MATCH_CREDIT_AMOUNT_1D": "860",
+        "PRIORITY": "HIGH",
+        "MATCH_BENEFICIARYACCOUNTNUMBER": "933576",
+        "STATUS": "CLOSED",
+        "MATCH_DEBIT_AMOUNT_1D": "150",
+        "MATCH_TRAN_AMOUNT_180D": "150"
+    }
+}
