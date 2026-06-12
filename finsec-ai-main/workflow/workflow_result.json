@@ -1,0 +1,13 @@
+{
+  "node-1": "/home/e5743283/MLpipe-v2/Backend/Outfiles/48dad6cc-5468-463d-8a46-1fd2b6550e14.parquet",
+  "node-2": "/home/e5743283/MLpipe-v2/Backend/parquet_2.parquet",
+  "node-3": {
+    "connection_url": "jdbc:mysql://10.74.169.120:3306/workflow_db?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC",
+    "database": "workflow_db",
+    "database_type": "mysql",
+    "host": "10.74.169.120",
+    "port": "3306",
+    "row_count": 15,
+    "table": "customer_data_8b286d90_4fca_4312_8207_fdcf86ab73ab"
+  }
+}

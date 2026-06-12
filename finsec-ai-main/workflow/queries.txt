@@ -1,0 +1,10 @@
+"query": "CASE WHEN joining_year <= 2019 THEN 'Senior' WHEN joining_year > 2019 AND joining_year <= 2022 THEN 'Mid' ELSE 'Junior' END"
+
+"query": "CASE WHEN location = 'New York' THEN 'NYC' WHEN location = 'Chicago' THEN 'CHI' ELSE 'Other' END"
+
+
+
+
+Transactions:
+hour : CAST(substring(DE_12, 1, 2) AS int)
+odd_hour : CASE WHEN hour < 5 THEN 1 ELSE 0 END

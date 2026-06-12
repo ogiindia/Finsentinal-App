@@ -1,0 +1,12 @@
+emp_id,name,dept_id,joining_year
+1,Alice,101,2018
+2,Bob,102,2019
+3,Charlie,103,2021
+4,David,101,2020
+5,Eve,102,2022
+6,Frank,103,2023
+7,Grace,101,2019
+8,Helen,102,2020
+9,Ivan,103,2021
+10,Judy,101,2022
+11,Kate,102,2023
