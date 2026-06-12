@@ -1,0 +1,88 @@
+import {
+  Home,
+  Users,
+  Layers,
+  Workflow,
+  Map,
+  Brain,
+  AlertTriangle,
+  Network,
+  CheckSquare,
+  UserCog
+} from 'lucide-react';
+
+export const MENU_CONFIG = [
+  // {
+  //   title: 'Home',
+  //   path: '/home',
+  //   icon: Home,
+  //   iconColor: '#2563eb', // Blue
+  //   description: 'System overview and quick navigation'
+  // },
+  {
+    title: 'U-print',
+    path: '/profiling',
+    icon: Users,
+    iconColor: '#16a34a', // Green
+    description: 'Customer behavior and risk profiling'
+  },
+  {
+    title: 'KeyStone',
+    path: '/feature-list',
+    icon: Layers,
+    iconColor: '#9333ea', // Purple
+    description: 'Feature definitions used in ML models'
+  },
+  {
+    title: 'NeuroFlow',
+    path: '/workflow',
+    icon: Workflow,
+    iconColor: '#0d9488', // Teal
+    description: 'Model and rule execution workflows',
+    roles: ['admin', 'superadmin']
+  },
+  {
+    title: 'S-Connect',
+    path: '/model-config',
+    icon: Map,
+    iconColor: '#f97316', // Orange
+    description: 'Map models to channels and rules',
+    roles: ['admin', 'superadmin']
+  },
+  {
+    title: 'ML Studio',
+    path: '/model-stats',
+    icon: Brain,
+    iconColor: '#7c3aed', // Indigo
+    description: 'Model performance and statistics'
+  },
+  {
+    title: 'Alert-Q index',
+    path: '/case-manager',
+    icon: AlertTriangle,
+    iconColor: '#dc2626', // Red
+    description: 'Fraud alerts and case investigation'
+  },
+  {
+    title: 'Mule Net',
+    path: '/mule',
+    icon: Network,
+    iconColor: '#0891b2', // Cyan
+    description: 'Money mule detection network'
+  },
+  {
+    title: 'Intel Gate',
+    path: '/makerchecker',
+    icon: CheckSquare,
+    iconColor: '#15803d', // Dark Green
+    description: 'Approval and validation workflows'
+  },
+  {
+    title: 'Manage User',
+    path: '/user-access',
+    icon: UserCog,
+    iconColor: '#374151', // Gray
+    description: 'User roles and access management',
+    roles: ['superadmin']
+  }
+];

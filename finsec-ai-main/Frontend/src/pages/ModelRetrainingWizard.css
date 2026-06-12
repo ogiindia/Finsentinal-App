@@ -1,0 +1,634 @@
+/* =========================
+   Container & Card Base
+   ========================= */
+.wizard-container {
+  margin-top: 1.5rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.wizard-container-full {
+  padding-inline: 0;
+}
+
+.wizard-card {
+  position: relative;
+  width: 100%;
+  /* max-width: 960px; */
+  border-radius: 18px;
+  padding: 20px 22px 22px;
+  margin: 0 auto;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.08);
+  overflow: hidden;
+  /* Entrance + subtle breathing */
+  animation: card-enter 0.45s ease-out, card-breathe 6s ease-in-out infinite;
+  transform-origin: center top;
+}
+
+/* Keep this hook class but same palette */
+.wizard-card-contrast {
+  background: #ffffff;
+}
+
+/* Soft animated halo around card */
+.wizard-card::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: conic-gradient(
+    from 90deg,
+    rgba(34, 197, 94, 0.18),
+    rgba(14, 165, 233, 0.18),
+    rgba(129, 140, 248, 0.18),
+    rgba(34, 197, 94, 0.18)
+  );
+  z-index: -1;
+  opacity: 0.0;
+  animation: card-halo 10s linear infinite;
+}
+
+/* Slight lift on hover (desktop) */
+@media (hover: hover) {
+  .wizard-card:hover {
+    transform: translateY(-2px) scale(1.002);
+    box-shadow: 0 24px 60px rgba(15, 23, 42, 0.12);
+  }
+}
+
+/* =========================
+   Header & Progress
+   ========================= */
+.wizard-header {
+  display: flex;
+  justify-content: center;
+  /* gap: 16px; */
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  /* border-bottom: 1px solid #e5e7eb; */
+  position: relative;
+}
+
+/* Animated gradient bar under header */
+/* .wizard-header::before {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  bottom: -1px;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #22c55e, #14b8a6, #0ea5e9, #6366f1);
+  background-size: 200% 100%;
+  opacity: 0.8;
+  animation: header-gradient 6s linear infinite;
+} */
+
+.wizard-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.wizard-subtitle {
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin-top: 2px;
+}
+
+.wizard-model-name {
+  font-weight: 500;
+  color: #111827;
+}
+
+/* .wizard-header-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+} */
+
+.wizard-step-counter {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #0f172a;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+}
+
+/* Progress bar */
+.wizard-progress {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.wizard-progress-bar {
+  width: 160px;
+  height: 6px;
+  border-radius: 999px;
+  background: #f3f4f6;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+}
+
+.wizard-progress-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #22c55e, #14b8a6, #0ea5e9);
+  background-size: 200% 100%;
+  box-shadow: 0 0 10px rgba(34, 197, 94, 0.4);
+  transition: width 0.6s ease;
+  animation: progress-sheen 4s ease-in-out infinite;
+}
+
+.wizard-progress-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #374151;
+}
+
+/* =========================
+   Meta Row
+   ========================= */
+.wizard-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 8px;
+  margin-bottom: 16px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+}
+
+.wizard-meta-item {
+  min-width: 150px;
+  display: flex;
+  flex-direction: column;
+}
+
+.wizard-meta-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #9ca3af;
+}
+
+.wizard-meta-value {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #111827;
+}
+
+/* =========================
+   Steps Layout
+   ========================= */
+.wizard-steps-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.wizard-step {
+  display: flex;
+  gap: 12px;
+}
+
+.wizard-timeline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Icon wrapper */
+.wizard-icon-wrapper {
+  position: relative;
+}
+
+.wizard-icon-wrapper-active {
+  animation: icon-pop 0.25s ease-out;
+}
+
+.icon-circle {
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* Icon states (soft colors) */
+.icon-completed {
+  background: #ecfdf5;
+  border: 1px solid #22c55e;
+}
+
+.icon-active {
+  background: #e0f2fe;
+  border: 1px solid #0ea5e9;
+}
+
+.icon-failed {
+  background: #fef2f2;
+  border: 1px solid #ef4444;
+}
+
+.icon-pending {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+}
+
+.icon-next-glow {
+  box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.5);
+  animation: next-glow 1.6s ease-out infinite;
+}
+
+.pending-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: #9ca3af;
+}
+
+/* Spinner for active step */
+.spinner {
+  width: 18px;
+  height: 18px;
+  position: relative;
+}
+
+.spinner-blade {
+  position: absolute;
+  width: 2px;
+  height: 6px;
+  border-radius: 999px;
+  background: #0284c7;
+  top: 1px;
+  left: 50%;
+  transform-origin: center 8px;
+  opacity: 0.25;
+  animation: spinner-fade 1s linear infinite;
+}
+
+.spinner-blade:nth-child(1) { transform: rotate(0deg) translateX(-50%); animation-delay: 0s; }
+.spinner-blade:nth-child(2) { transform: rotate(45deg) translateX(-50%); animation-delay: 0.12s; }
+.spinner-blade:nth-child(3) { transform: rotate(90deg) translateX(-50%); animation-delay: 0.24s; }
+.spinner-blade:nth-child(4) { transform: rotate(135deg) translateX(-50%); animation-delay: 0.36s; }
+.spinner-blade:nth-child(5) { transform: rotate(180deg) translateX(-50%); animation-delay: 0.48s; }
+.spinner-blade:nth-child(6) { transform: rotate(225deg) translateX(-50%); animation-delay: 0.6s; }
+.spinner-blade:nth-child(7) { transform: rotate(270deg) translateX(-50%); animation-delay: 0.72s; }
+.spinner-blade:nth-child(8) { transform: rotate(315deg) translateX(-50%); animation-delay: 0.84s; }
+
+/* Connector between steps */
+.wizard-connector {
+  flex: 1;
+  width: 2px;
+  margin-top: 4px;
+  margin-bottom: -8px;
+  overflow: hidden;
+}
+
+.wizard-connector-inner {
+  width: 100%;
+  height: 100%;
+  transform-origin: top;
+  transform: scaleY(0);
+  animation: connector-grow 0.55s ease forwards;
+}
+
+.connector-completed {
+  background: linear-gradient(to bottom, #22c55e, #16a34a);
+}
+
+.connector-active {
+  background: linear-gradient(to bottom, #22c55e, #0ea5e9);
+}
+
+.connector-pending {
+  background: #e5e7eb;
+}
+
+.connector-failed {
+  background: linear-gradient(to bottom, #f97316, #ef4444);
+}
+
+/* Labels */
+.wizard-label {
+  flex: 1;
+  padding: 7px 11px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  background: #f9fafb;
+  transition: background 0.3s ease, border-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.wizard-label p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #111827;
+}
+
+.wizard-label-caption {
+  display: inline-block;
+  margin-top: 2px;
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+.wizard-label-caption-complete {
+  color: #16a34a;
+}
+
+.wizard-label-caption-failed {
+  color: #b91c1c;
+}
+
+.wizard-label-caption-next {
+  color: #0ea5e9;
+}
+
+/* Label color states */
+.wizard-label-completed {
+  background: #ecfdf5;
+  border-color: #bbf7d0;
+}
+
+.wizard-label-failed {
+  background: #fef2f2;
+  border-color: #fecaca;
+}
+
+.wizard-label-active {
+  background: #eff6ff;
+  border-color: #bfdbfe;
+  box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.15);
+  transform: translateX(2px);
+}
+
+.wizard-label-next {
+  background: #f0f9ff;
+  border-color: #bae6fd;
+}
+
+.wizard-label-pending {
+  background: #f9fafb;
+  border-color: #e5e7eb;
+}
+
+/* Active pulse ring */
+.active-pulse-ring {
+  position: absolute;
+  inset: -6px;
+  border-radius: 999px;
+  border: 2px solid rgba(56, 189, 248, 0.5);
+  animation: pulse-ring 1.4s ease-out infinite;
+}
+
+/* Check & cross icons */
+.checkmark {
+  width: 18px;
+  height: 18px;
+  stroke: #16a34a;
+  stroke-width: 3;
+  stroke-miterlimit: 10;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.checkmark-circle {
+  stroke: rgba(34, 197, 94, 0.3);
+  stroke-width: 3;
+}
+
+.checkmark-check {
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  animation: checkmark 0.35s ease forwards;
+}
+
+.crossmark {
+  width: 18px;
+  height: 18px;
+  stroke: #b91c1c;
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.crossmark-circle {
+  stroke: rgba(239, 68, 68, 0.3);
+  stroke-width: 3;
+}
+
+.crossmark-line-left,
+.crossmark-line-right {
+  stroke-dasharray: 28;
+  stroke-dashoffset: 28;
+  animation: crossmark 0.3s ease forwards;
+}
+
+/* =========================
+   Summary Cards (Completed)
+   ========================= */
+.wizard-summary-container {
+  margin-top: 8px;
+}
+
+.wizard-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 12px;
+}
+
+.wizard-summary-card {
+  position: relative;
+  border-radius: 14px;
+  padding: 10px 12px;
+  background: linear-gradient(135deg, blue, #5b51e7);
+  /* background: linear-gradient(135deg, #eef2ff, #ecfeff); */
+  background-size: 200% 200%;
+  border: 1px solid #dbeafe;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.07);
+  transform: translateY(8px) scale(0.98);
+  opacity: 0;
+  animation: summary-pop 0.35s ease-out forwards, summary-sheen 8s ease-in-out infinite;
+}
+
+.wizard-summary-label {
+  font-size: 0.88rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #00FFFF;
+  font-weight: 400;
+  margin-bottom: 2px;
+}
+
+.wizard-summary-value {
+  font-size: 1rem;
+  font-weight: 600;
+/* color: #FFFFFF; */
+color: #FFD700;
+}
+
+/* Staggered summary animation */
+.summary-appear-1 { animation-delay: 0.05s; }
+.summary-appear-2 { animation-delay: 0.12s; }
+.summary-appear-3 { animation-delay: 0.19s; }
+.summary-appear-4 { animation-delay: 0.26s; }
+
+/* =========================
+   Animations
+   ========================= */
+
+/* Card enter & breathing */
+@keyframes card-enter {
+  0%   { opacity: 0; transform: translateY(10px) scale(0.98); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes card-breathe {
+  0%, 100% { box-shadow: 0 20px 45px rgba(15, 23, 42, 0.08); }
+  50%      { box-shadow: 0 24px 55px rgba(15, 23, 42, 0.12); }
+}
+
+/* Animated halo around card */
+@keyframes card-halo {
+  0%   { opacity: 0.0; transform: rotate(0deg); }
+  20%  { opacity: 0.12; }
+  80%  { opacity: 0.12; }
+  100% { opacity: 0.0; transform: rotate(360deg); }
+}
+
+/* Header gradient movement */
+@keyframes header-gradient {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+/* Progress minor sheen */
+@keyframes progress-sheen {
+  0%, 100% { background-position: 0% 50%; }
+  50%      { background-position: 100% 50%; }
+}
+
+/* Glow for upcoming step */
+@keyframes next-glow {
+  0%   { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.5); }
+  70%  { box-shadow: 0 0 0 10px rgba(56, 189, 248, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0); }
+}
+
+/* Active pulse around icon */
+@keyframes pulse-ring {
+  0%   { transform: scale(0.8); opacity: 0.7; }
+  100% { transform: scale(1.2); opacity: 0; }
+}
+
+/* Connector grow */
+@keyframes connector-grow {
+  from { transform: scaleY(0); }
+  to   { transform: scaleY(1); }
+}
+
+/* Spinner fade */
+@keyframes spinner-fade {
+  0%   { opacity: 1; }
+  50%  { opacity: 0.25; }
+  100% { opacity: 0.1; }
+}
+
+/* Check / cross draws */
+@keyframes checkmark {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes crossmark {
+  to { stroke-dashoffset: 0; }
+}
+
+/* Icon pop */
+@keyframes icon-pop {
+  0%   { transform: scale(0.85); }
+  100% { transform: scale(1); }
+}
+
+/* Summary cards pop + shimmer */
+@keyframes summary-pop {
+  0%   { transform: translateY(8px) scale(0.98); opacity: 0; }
+  100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+@keyframes summary-sheen {
+  0%, 100% { background-position: 0% 0%; }
+  50%      { background-position: 100% 100%; }
+}
+
+/* =========================
+   Responsive
+   ========================= */
+@media (max-width: 640px) {
+  .wizard-card {
+    padding: 16px;
+    border-radius: 14px;
+  }
+
+  .wizard-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  /* .wizard-header-right {
+    align-items: flex-start;
+  } */
+}
+
+
+
+
+
+
+
+
+
+/* Summary card icon layout wrapper */
+.summary-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Right-side icon in summary cards */
+.summary-icon {
+  width: 38px;
+  height: 38px;
+  color: white;
+  opacity: 0;
+  transform: translateX(8px) scale(0.9);
+  animation: summary-icon-pop 0.45s ease-out forwards;
+}
+
+/* stagger icons */
+.summary-appear-1 .summary-icon { animation-delay: 0.15s; }
+.summary-appear-2 .summary-icon { animation-delay: 0.22s; }
+.summary-appear-3 .summary-icon { animation-delay: 0.29s; }
+.summary-appear-4 .summary-icon { animation-delay: 0.36s; }
+
+@keyframes summary-icon-pop {
+  0% {
+    opacity: 0;
+    transform: translateX(8px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
