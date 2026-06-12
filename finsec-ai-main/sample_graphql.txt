@@ -1,0 +1,149 @@
+query ($phone: String!) {
+  customers(
+    where: { all: [{ column: "Phone", op: EQ, value: $phone }] }
+    limit: 10000
+  ) {
+    CustomerId
+  }
+}
+
+{
+  "query": "query ($customer_id: String!) {
+  customers(
+    where: {all: [{column: "Customer_Id", op: EQ, value: $customer_id}]}
+    limit: 10000
+  ) {
+    CustomerId
+    FirstName
+    LastName
+    Email
+    Phone
+    Address
+    MerchantAddress
+  }
+}",
+  "variables": {
+  "customer_id": "826226"
+}
+}
+
+curl -X POST http://localhost:8005/cust_graphql -H "Content-Type: application/json" -d '{
+  "query": "query ($customer_id: String!) {
+  customers(
+    where: {all: [{column: "Customer_Id", op: EQ, value: $customer_id}]}
+    limit: 10000
+  ) {
+    CustomerId
+    FirstName
+    LastName
+    Email
+    Phone
+    Address
+    MerchantAddress
+  }
+}",
+  "variables": {
+  "customer_id": "826226"
+}
+}'
+
+{
+  "query": "query ($phone: String!) { customers(where:{all:[{column:\"Phone\", op:EQ, value:$phone}]}, limit:10000){ CustomerId } }",
+  "variables": { "phone": "9925168697" }
+}
+
+# Transaction GraphQL
+# For getting the transactions data using datetime filter
+query Conditional {
+  transactions(
+    filter: {
+      participant_id_eq: 787977
+      direction: BOTH
+      timestamp: {
+        gte: "2025-06-01T00:00:00+05:30"
+        lte: "2025-09-27T23:59:59+05:30"
+      }
+    }
+    order_by: TIMESTAMP_DESC
+    limit: 100
+  ) {
+    id
+    timestamp
+    amount
+    results { fraud score tran_count_1D tran_amount_1D income }
+  }
+}
+
+# Pagination
+# Page 1
+query Page1 {
+  transactions(order_by: TIMESTAMP_DESC, limit: 50, offset: 0) {
+    id timestamp amount customer_id to_customer_id
+  }
+}
+
+# Page 2
+query Page2 {
+  transactions(order_by: TIMESTAMP_DESC, limit: 50, offset: 50) {
+    id timestamp amount customer_id to_customer_id
+  }
+}
+
+# Page 3
+query Page3 {
+  transactions(order_by: TIMESTAMP_DESC, limit: 50, offset: 100) {
+    id timestamp amount customer_id to_customer_id
+  }
+}
+
+
+
+
+
+
+
+other sample query:
+
+query ConditionalWithResultFilters {
+  transactions(
+    filter: {
+      participant_id_eq: 787977
+      direction: BOTH
+      timestamp: { gte: "2025-06-01T00:00:00+05:30", lte: "2025-09-27T23:59:59+05:30" }
+      results: {
+        fraud_eq: 1
+        score: { gte: "0.80" }
+        tran_count_1D: { gte: "3" }
+        tran_amount_1D: { gte: "1500.00" }
+      }
+    }
+    order_by: TIMESTAMP_DESC
+    limit: 100
+  ) {
+    id
+    timestamp
+    amount
+    results { fraud score tran_count_1D tran_amount_1D }
+  }
+}
+
+
+
+
+query StatsForCustomer {
+  transactions_aggregate(
+    filter: {
+      participant_id_eq: 787977
+      direction: BOTH
+      timestamp: { gte: "2025-09-01T00:00:00+05:30", lte: "2025-09-27T23:59:59+05:30" }
+      results: { fraud_eq: 1, score: { gte: "0.80" } }
+    }
+  ) {
+    count
+    sum_amount
+    avg_amount
+    min_amount
+    max_amount
+  }
+}
+

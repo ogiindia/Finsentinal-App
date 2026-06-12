@@ -1,0 +1,9 @@
+FOR BACKEND:
+
+1. Create virtual environment and install all the requirements.
+2. Configure all the tables, paths, db urls, etc in .env file.
+3. For create all the required tables just run the app.py in backend once and stop it.
+4. For adding synthetic data: Edit db url and paths and run three files.
+    i.transaction_data_upload_{db}.py
+    ii.model_result_adder_{db}.py
+    iii.customer_upload.py

@@ -1,0 +1,33 @@
+$rootCert = New-SelfSignedCertificate `
+    -Type Custom `
+    -Subject "CN=FIS ROOT CA" `
+    -KeyUsage CertSign, CRLSign, DigitalSignature `
+    -KeyAlgorithm RSA `
+    -KeyLength 4096 `
+    -HashAlgorithm SHA256 `
+    -NotAfter (Get-Date).AddYears(10) `
+    -CertStoreLocation "Cert:\CurrentUser\My"
+
+
+  $codeSignCert = New-SelfSignedCertificate `
+    -Type Custom `
+    -Subject "CN=FIS Code Signing" `
+    -KeyAlgorithm RSA `
+    -KeyLength 4096 `
+    -HashAlgorithm SHA256 `
+    -KeyUsage DigitalSignature `
+    -TextExtension @("2.5.29.37={text}1.3.6.1.5.5.7.3.3") `
+    -NotAfter (Get-Date).AddYears(3) `
+    -Signer $rootCert `
+    -CertStoreLocation "Cert:\CurrentUser\My"
+
+
+  $password = ConvertTo-SecureString "StrongPassword123" -AsPlainText -Force
+
+Export-PfxCertificate `
+    -Cert $codeSignCert `
+    -FilePath "$env:USERPROFILE\FIS_CodeSigning.pfx" `
+    -Password $password
+
+
+for windows 11 windows sdk need to install.

@@ -1,0 +1,91 @@
+Combined:
+
+{
+  "model_id": 1,
+
+  "persistance_path": "C:/data/persistence.csv",
+  "transaction_path": "C:/data/transaction.csv",
+
+  "persistance_file_type": "csv",
+  "transaction_file_type": "csv",
+
+  "join_left_columns": ["CustomerID"],
+  "join_right_columns": ["CustomerID"],
+
+  "feature_mappings": {
+    "AGE": "Age",
+    "BALANCE": "AccountBalance",
+    "TXN_AMOUNT": "TransactionAmount",
+    "LOCATION": "City"
+  },
+
+  "target_column": "IS_FRAUD",
+
+  "alert_rows": [
+    {
+      "Age": 45,
+      "AccountBalance": 7000,
+      "TransactionAmount": 500,
+      "City": "Coimbatore",
+      "CLOSEREASON": "NOT_FRAUD"
+    }
+  ],
+
+  "run_async": true
+}
+
+
+Only Alert Rows:
+
+{
+  "model_id": 1,
+
+  "alert_rows": [
+    {
+      "Age": 30,
+      "AccountBalance": 15000,
+      "TransactionAmount": 899,
+      "City": "Chennai",
+      "CLOSEREASON": "FRAUD"
+    }
+  ],
+
+  "feature_mappings": {
+    "AGE": "Age",
+    "BALANCE": "AccountBalance",
+    "TXN_AMOUNT": "TransactionAmount",
+    "LOCATION": "City"
+  },
+
+  "target_column": "IS_FRAUD",
+
+  "run_async": false
+}
+
+
+Only File Paths:
+
+{
+  "model_id": 1,
+  "persistance_path": "C:/data/persistence.csv",
+  "transaction_path": "C:/data/transaction.xlsx",
+
+  "persistance_file_type": "csv",
+  "transaction_file_type": "xlsx",
+
+  "join_left_columns": ["CustomerID"],
+  "join_right_columns": ["CustomerID"],
+
+  "join_type": "left",
+
+  "feature_mappings": {
+    "AGE": "Age",
+    "BALANCE": "AccountBalance",
+    "TXN_AMOUNT": "TransactionAmount",
+    "LOCATION": "City"
+  },
+
+  "target_column": "IS_FRAUD",
+
+  "run_async": false
+}
