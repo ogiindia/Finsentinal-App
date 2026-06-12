@@ -1,0 +1,10 @@
+# Start Spark Master Script
+cd %SPARK_HOME%
+
+.\bin\spark-class.cmd org.apache.spark.deploy.master.Master
+
+# Start Spark Worker Script
+cd %SPARK_HOME%
+
+.\bin\spark-class.cmd org.apache.spark.deploy.worker.Worker spark://10.247.208.107:7077
+
