@@ -1,0 +1,20 @@
+{
+  "alert_category": "FIRSTNAMEMATCH",
+  "model_filename": "ONNX_file_supervised_model.onnx",
+  "feature_mappings": {
+    "tran_above50k": "MATCH_HOUR_H",
+    "tran_count_10min": "MATCH_TRAN_AMOUNT_180D_EXE",
+    "tran_count_1D": "MATCH_TRAN_RATIO_COUNT_1D_30D",
+    "tran_amount_10min": "MATCH_TRAN_AMOUNT_90D_EXE",
+    "tran_amount_1D": "MATCH_TRAN_RATIO_COUNT_1D_30D",
+    "isoddhr": "MATCH_HOUR_H",
+    "Weekday": "MATCH_TRAN_AMOUNT_180D_EXE",
+    "count_of_9_in_amount": "MATCH_VULNERABILITY",
+    "Location_Change": "MATCH_ORDERINGCUSTOMERNAME",
+    "C_MODE_ATM": "MATCH_TRAN_AMOUNT_90D_EXE",
+    "C_MODE_POS": "MATCH_UNSUP_IBMB_SCORE",
+    "C_MODE_ECOM": "MATCH_UNSUP_IBMB_SCORE"
+  },
+  "created_at": "2025-10-13T14:30:28.384813",
+  "updated_at": "2025-10-13T14:30:28.384830"
+}

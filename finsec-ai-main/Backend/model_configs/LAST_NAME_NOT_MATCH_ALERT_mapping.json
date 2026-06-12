@@ -1,0 +1,20 @@
+{
+  "alert_category": "LAST_NAME_NOT_MATCH_ALERT",
+  "model_filename": "ONNX_file_supervised_model.onnx",
+  "feature_mappings": {
+    "tran_above50k": "MATCH_GACCTWITHBANK",
+    "tran_count_10min": "MATCH_TRAN_AMOUNT_180D_EXE",
+    "tran_count_1D": "MATCH_VULNERABILITY",
+    "tran_amount_10min": "MATCH_TRAN_RATIO_COUNT_1D_30D",
+    "tran_amount_1D": "MATCH_HOUR_H",
+    "isoddhr": "MATCH_CREDITACCOUNTNUMBER",
+    "Weekday": "MATCH_UNSUP_LABEL_ODDHR",
+    "count_of_9_in_amount": "MATCH_CUSTOMER_ID_EXE",
+    "Location_Change": "MATCH_BENEFICIARYACCOUNTNUMBER",
+    "C_MODE_ATM": "MATCH_FIRSTNAMEMATCH",
+    "C_MODE_POS": "MATCH_DEVICE_ID",
+    "C_MODE_ECOM": "MATCH_CUSTOMERREFERENCE"
+  },
+  "created_at": "2025-10-13T08:30:47.416093",
+  "updated_at": "2025-10-13T08:30:47.416111"
+}
