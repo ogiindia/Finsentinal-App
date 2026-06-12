@@ -1,0 +1,153 @@
+{
+  "services": {
+    "core": "http://localhost:8003",
+    "workflow": "http://localhost:8000",
+    "graphql": "http://localhost:8001",
+    "maker_checker": "http://10.75.157.138:8888",
+    "mule": "http://localhost:8004",
+    "report": "http://localhost:8005",
+    "alert": "http://localhost:8006"
+  },
+  "routes": [
+    {
+      "name": "customer",
+      "prefix": "/customer",
+      "service": "core",
+      "target_prefix": "/customer",
+      "methods": ["GET", "POST", "PUT", "PATCH", "DELETE"],
+      "timeout": 60,
+      "auth_required": false,
+      "rate_limit": "10000/minute"
+    },
+    {
+      "name": "model_config",
+      "prefix": "/model_config",
+      "service": "core",
+      "target_prefix": "/model_config",
+      "methods": ["GET", "POST", "PUT", "PATCH", "DELETE"],
+      "timeout": 60,
+      "auth_required": false,
+      "rate_limit": "10000/minute"
+    },
+    {
+      "name": "alerts",
+      "prefix": "/alerts",
+      "service": "core",
+      "target_prefix": "/alerts",
+      "methods": ["GET", "POST", "PUT", "PATCH", "DELETE"],
+      "timeout": 60,
+      "auth_required": false,
+      "rate_limit": "10000/minute"
+    },
+    {
+      "name": "features",
+      "prefix": "/feature",
+      "service": "core",
+      "target_prefix": "/feature",
+      "methods": ["GET"],
+      "timeout": 60,
+      "auth_required": false,
+      "rate_limit": "10000/minute"
+    },
+    {
+      "name": "mule",
+      "prefix": "/mule",
+      "service": "mule",
+      "target_prefix": "/mule",
+      "methods": ["GET", "POST", "PUT", "PATCH", "DELETE"],
+      "timeout": 60,
+      "auth_required": false,
+      "rate_limit": "10000/minute"
+    },
+    {
+      "name": "version",
+      "prefix": "/api/version",
+      "service": "core",
+      "target_prefix": "/api/version",
+      "methods": ["GET", "POST"],
+      "timeout": 60,
+      "auth_required": false,
+      "rate_limit": "10000/minute"
+    },
+    {
+      "name": "retrain",
+      "prefix": "/api/retrain",
+      "service": "core",
+      "target_prefix": "/api/retrain",
+      "methods": ["GET", "POST", "PUT", "PATCH", "DELETE"],
+      "timeout": 120,
+      "auth_required": false,
+      "rate_limit": "10000/minute"
+    },
+    {
+      "name": "dashboard",
+      "prefix": "/dashboard",
+      "service": "core",
+      "target_prefix": "/dashboard",
+      "methods": ["GET", "POST", "PUT", "PATCH", "DELETE"],
+      "timeout": 120,
+      "auth_required": false,
+      "rate_limit": "10000/minute"
+    },
+    {
+      "name": "workflow",
+      "prefix": "/workflow",
+      "service": "workflow",
+      "target_prefix": "/api",
+      "methods": ["GET", "POST", "PUT", "PATCH", "DELETE"],
+      "timeout": 120,
+      "auth_required": false,
+      "rate_limit": "10000/minute"
+    },
+    {
+      "name": "cust_graphql",
+      "prefix": "/cust_graphql",
+      "service": "graphql",
+      "target_prefix": "/cust_graphql",
+      "methods": ["GET", "POST"],
+      "timeout": 120,
+      "auth_required": false,
+      "rate_limit": "10000/minute"
+    },
+    {
+      "name": "trans_graphql",
+      "prefix": "/trans_graphql",
+      "service": "graphql",
+      "target_prefix": "/trans_graphql",
+      "methods": ["GET", "POST"],
+      "timeout": 120,
+      "auth_required": false,
+      "rate_limit": "10000/minute"
+    },
+    {
+      "name": "maker_checker",
+      "prefix": "/maker_checker",
+      "service": "maker_checker",
+      "target_prefix": "",
+      "methods": ["GET", "POST"],
+      "timeout": 600,
+      "auth_required": false,
+      "rate_limit": "10000/minute"
+    },
+    {
+      "name": "report",
+      "prefix": "/report",
+      "service": "report",
+      "target_prefix": "/report",
+      "methods": ["POST"],
+      "timeout": 600,
+      "auth_required": false,
+      "rate_limit": "10000/minute"
+    },
+    {
+      "name": "alert",
+      "prefix": "/alert",
+      "service": "alert",
+      "target_prefix": "/alerts",
+      "methods": ["GET", "POST"],
+      "timeout": 600,
+      "auth_required": false,
+      "rate_limit": "10000/minute"
+    }
+  ]
+}
